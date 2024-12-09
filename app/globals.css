@@ -13,6 +13,7 @@
   --font_size:62.5%;
   --background: #ffffff;
   --foreground: #171717;
+  
 }
 
 body {
@@ -21,4 +22,5 @@ body {
   font-family: "MadofmgFont", sans-serif;
   font-size: var(--font_size);
   user-select: none;
+  overflow: hidden;
 }

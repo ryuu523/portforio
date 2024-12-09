@@ -1,0 +1,24 @@
+.grid{
+    display: grid;
+    place-content: center;
+    width: 100dvw;
+    height: 100dvh;
+}
+:root {
+    --var: calc(100vh * (16 / 9));
+    --cut: 48;
+  }
+  
+  @media (min-aspect-ratio: 16/9) {
+    :root {
+      --var: 100dvw;
+      --cut: 48;
+    }
+  }
+  
+  @media (max-aspect-ratio: 16/9) {
+    :root {
+      --var: 100dvh;
+      --cut: 27;
+    }
+  }
