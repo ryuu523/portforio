@@ -1,7 +1,7 @@
 "use client"
-import { useRouter, usePathname } from "next/navigation";
+// import { useRouter, usePathname } from "next/navigation";
 import "./globals.css";
-import { useState } from "react";
+// import { useState } from "react";
 export default function RootLayout({
   children,
 }: Readonly<{
