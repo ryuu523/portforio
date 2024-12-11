@@ -7,9 +7,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const router = useRouter()
-  const pathname = usePathname()
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  // const router = useRouter()
+  // const pathname = usePathname()
+  // const [isLoading, setIsLoading] = useState<boolean>(false)
 
   return (
     <html lang="ja">
