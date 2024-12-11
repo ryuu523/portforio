@@ -41,31 +41,7 @@
     }
    
 }
-.keyNavigation{
-    z-index: 9999;
-    position: absolute;
-    right: 0.5dvw;
-    bottom: 1dvh;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.85);
-    color: white;
-    width: 25dvw;
-    height: 5dvh;
-    border: 5px solid white;
-    border-radius: 5px;
-    
-    ul{
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        li{
-            font-size: 1rem;
-            margin: 0 0.5dvw;
-        }
-    }
-}
+
 
 @keyframes blink {
     0%{

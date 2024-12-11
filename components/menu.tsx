@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import "../styles/menu.css"
 import { useRouter } from "next/navigation";
 import Link from "next/link"
+import KeyNavigation from "./keyNavigation";
 
 
 export default function Menu() {
@@ -33,11 +34,11 @@ export default function Menu() {
     const handleKeydown = useCallback((e: KeyboardEvent) => {
         let vec = 0
         if (e.key === 'Escape') {
-            
-            if(!isActive){
+
+            if (!isActive) {
                 setSelectedTriangle(0)
             }
-            setIsActive((prev)=>!prev)
+            setIsActive((prev) => !prev)
         }
 
         if (!isActive) return
@@ -55,7 +56,7 @@ export default function Menu() {
         }
         setSelectedTriangle((prev) => (prev + vec + 5) % 5)
 
-    }, [handleEnterNavigation,isActive])
+    }, [handleEnterNavigation, isActive])
     useEffect(() => {
         window.addEventListener("keydown", handleKeydown);
         return () => window.removeEventListener("keydown", handleKeydown)
@@ -80,14 +81,6 @@ export default function Menu() {
                 </div >
             </div>
             }
-            <div className="keyNavigation">
-                <ul>
-                    <li>ESC : メニューを開く</li>
-                    <li>test : test</li>
-                    <li>test : test</li>
-                    <li>test : test</li>
-                </ul>
-            </div>
         </>
     );
 }

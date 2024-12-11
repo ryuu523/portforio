@@ -1,4 +1,5 @@
 "use client"
+import KeyNavigation from "@/components/keyNavigation";
 // import { useRouter, usePathname } from "next/navigation";
 import "./globals.css";
 // import { useState } from "react";
@@ -15,6 +16,8 @@ export default function RootLayout({
     <html lang="ja">
       <body>
         {children}
+        <KeyNavigation />
+
       </body>
     </html>
   );

@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import "../styles/top.css"
 import Link from "next/link"
 import { useRouter } from "next/navigation";
+import KeyNavigation from "@/components/keyNavigation";
 export default function Home() {
   const router = useRouter();
 
