@@ -3,7 +3,6 @@ import { useCallback, useEffect, useState } from "react";
 import "../styles/menu.css"
 import { useRouter } from "next/navigation";
 import Link from "next/link"
-import KeyNavigation from "./keyNavigation";
 
 
 export default function Menu() {
