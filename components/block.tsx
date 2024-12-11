@@ -17,24 +17,28 @@ type BlockProps = {
 };
 
 export default function Block({ type }: BlockProps) {
+  
     const getImageSrc = (): string => {
         switch (type) {
-            case 1:
-                return see1.src;
-            case 2:
+            case 0:
                 return grass1.src;
-            case 3:
-                return snow.src;
-            case 4:
-                return sand.src;
-            case 5:
-                return lava.src;
-            case 6:
-                return bridge.src
-            default:
+            case 1:
                 return grass2.src;
+            case 2:
+                return see1.src;
+            case 3:
+                return see2.src;
+            case 4:
+                return snow.src;
+            case 5:
+                return sand.src;
+            case 6:
+                return lava.src;
+            default:
+                return grass1.src
         }
     }
+
     return (
         <>
             <div >
