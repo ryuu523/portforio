@@ -1,6 +1,7 @@
 "use client";
 
 import Field from "@/components/field";
+import Menu from "@/components/menu";
 
 export default function Worldmap() {
     // const field: Array<Array<number>> = Array.from({ length: 27 }, (_, i) => Array.from({ length: 48 }, (_, j) => (i + j) % 2 + 1));　テストデータ
@@ -49,6 +50,7 @@ return bridge.src
 
     return (
         <div className="outer-div">
+            <Menu/>
             <Field className="inner-div" field={field} />
         </div>
     );

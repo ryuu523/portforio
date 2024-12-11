@@ -51,7 +51,7 @@ export default function Home() {
         </div>
         <div className="right">
           <Link className="text" href="worldmap">ぼうけんをはじめる</Link>
-          <Link className="text" href="">てすと１</Link>
+          <Link className="text" href="">せってい</Link>
           <Link className="text" href="">てすと２</Link>
         </div>
       </div>
