@@ -8,8 +8,9 @@
     align-items: center;
     background-color: rgba(0, 0, 0, 0.85);
     color: white;
-    width: 25dvw;
-    height: 5dvh;
+    width: 35dvw;
+    padding: 0.5rem;
+    height: 8dvh;
     border: 5px solid white;
     border-radius: 5px;
     
