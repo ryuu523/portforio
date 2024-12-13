@@ -5,7 +5,10 @@ const isProd = process.env.NODE_ENV === 'production';
 // リポジトリ名に置き換えてください
 const repoName = 'portforio';
 
+
+
 const nextConfig: NextConfig = {
+  reactStrictMode: false,
   assetPrefix: isProd ? `/${repoName}/` : '',
   basePath: isProd ? `/${repoName}` : '',
   images: {
