@@ -4,13 +4,21 @@ import { useCallback, useEffect, useState } from "react";
 import "../styles/top.css"
 import Link from "next/link"
 import { useRouter } from "next/navigation";
+import { useLoading } from "@/context/LoadingContext";
 export default function Home() {
   const router = useRouter();
+  const { setIsLoading, setDirection } = useLoading()
 
   const [selectedTriangle, setSelectedTriangle] = useState(0)
   const handleEnterNavigation = useCallback(() => {
     switch (selectedTriangle) {
       case 0:
+        // setDirection("out")
+        // setIsLoading(true)
+        // setTimeout(() => {
+
+        //   router.push("/worldmap")
+        // }, 800)
         router.push("/worldmap")
         break;
       case 1:
@@ -35,7 +43,7 @@ export default function Home() {
         break
     }
     setSelectedTriangle((prev) => (prev + vec + 3) % 3)
-  },[handleEnterNavigation])
+  }, [handleEnterNavigation])
   useEffect(() => {
     window.addEventListener("keydown", handleKeydown);
     return () => window.removeEventListener("keydown", handleKeydown)

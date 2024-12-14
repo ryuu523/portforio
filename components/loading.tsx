@@ -9,8 +9,9 @@ type Props = {
 };
 export default function Loading({ direction }: Props) {
     const [tiles, setTiles] = useState<boolean[][]>(Array.from({ length: SIZE }, () => Array.from({ length: SIZE }, () => direction === "out" ? false : true)));
-
+    
     const animationTiles = () => {
+        console.log(direction);
         let deg = 0
         let pR: { x: number, y: number }, pL: { x: number, y: number }
         let isIncompleteType: boolean
@@ -30,6 +31,8 @@ export default function Loading({ direction }: Props) {
             setTiles((prev) => {
                 if (!prev.flat(2).some((v) => v == isIncompleteType)) {
                     clearInterval(interval)
+                    console.log("end");
+                    
                     return prev
                 }
 
@@ -72,7 +75,7 @@ export default function Loading({ direction }: Props) {
         <div className={cn(`w-dvw h-dvh fixed top-0 left-0 z-[99999] grid grid-cols-[repeat(15,1fr)] grid-rows-[repeat(15,1fr)]`)}>
             {tiles.map((row, y) => {
                 return row.map((tile, x) => (
-                    <div key={`${y}:${x}`} className={cn({ "bg-yellow-200": tile })}></div>
+                    <div key={`${y}:${x}`} className={cn({ "bg-black": tile })}></div>
                 ));
             })}
         </div>
