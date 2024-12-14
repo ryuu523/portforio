@@ -1,15 +1,17 @@
 "use client";
 
+import { useLoading } from "@/context/LoadingContext";
 import { cn } from "@/utils";
 import { useEffect, useState } from "react";
 
 const SIZE: number = 15;
 type Props = {
-    direction: string
+    direction: string,
+    nextPage: () => void,
 };
-export default function Loading({ direction }: Props) {
+export default function Loading({ direction, nextPage }: Props) {
     const [tiles, setTiles] = useState<boolean[][]>(Array.from({ length: SIZE }, () => Array.from({ length: SIZE }, () => direction === "out" ? false : true)));
-    
+    const { setIsLoading } = useLoading()
     const animationTiles = () => {
         console.log(direction);
         let deg = 0
@@ -32,7 +34,8 @@ export default function Loading({ direction }: Props) {
                 if (!prev.flat(2).some((v) => v == isIncompleteType)) {
                     clearInterval(interval)
                     console.log("end");
-                    
+
+
                     return prev
                 }
 
@@ -71,6 +74,19 @@ export default function Loading({ direction }: Props) {
     useEffect(() => {
         animationTiles()
     }, []);
+    useEffect(() => {
+        if (!tiles.flat(2).some((v) => v == false)) {
+            if (direction === "out") {
+                setIsLoading(false)
+                nextPage()
+            }
+        }
+        if (!tiles.flat(2).some((v) => v == true)) {
+            if (direction === "in") {
+                setIsLoading(false)
+            }
+        }
+    }, [tiles])
     return (
         <div className={cn(`w-dvw h-dvh fixed top-0 left-0 z-[99999] grid grid-cols-[repeat(15,1fr)] grid-rows-[repeat(15,1fr)]`)}>
             {tiles.map((row, y) => {

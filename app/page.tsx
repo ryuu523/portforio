@@ -7,19 +7,15 @@ import { useRouter } from "next/navigation";
 import { useLoading } from "@/context/LoadingContext";
 export default function Home() {
   const router = useRouter();
-  const { setIsLoading, setDirection } = useLoading()
+  const { setIsLoading, setDirection,setNextUrl } = useLoading()
 
   const [selectedTriangle, setSelectedTriangle] = useState(0)
   const handleEnterNavigation = useCallback(() => {
     switch (selectedTriangle) {
       case 0:
-        // setDirection("out")
-        // setIsLoading(true)
-        // setTimeout(() => {
-
-        //   router.push("/worldmap")
-        // }, 800)
-        router.push("/worldmap")
+        setDirection("out")
+        setNextUrl("/worldmap")
+        setIsLoading(true)
         break;
       case 1:
         router.push("/")

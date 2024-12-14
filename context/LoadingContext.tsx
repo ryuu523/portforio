@@ -6,23 +6,22 @@ type LoadingContextType = {
     setIsLoading: (isLoading: boolean) => void;
     direction: string;
     setDirection: (isLoading: string) => void;
+    nextUrl: string;
+    setNextUrl: (isLoading: string) => void;
+    oldPathname: string;
+    setOldPathname: (oldPathname: string) => void;
 };
 
 const LoadingContext = createContext<LoadingContextType | undefined>(undefined);
 
 export const LoadingProvider = ({ children }: { children: ReactNode }) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const pathname = usePathname()
+    // const pathname = usePathname()
     const [direction, setDirection] = useState<string>("in")
-    useEffect(() => {
-        setIsLoading(true)
-        setTimeout(() => {
-            setIsLoading(false)
-            
-        }, 900)
-    }, [pathname])
+    const [nextUrl, setNextUrl] = useState<string>("/")
+    const [oldPathname, setOldPathname] = useState<string>("/")
     return (
-        <LoadingContext.Provider value={{ isLoading, setIsLoading, direction, setDirection }}>
+        <LoadingContext.Provider value={{ oldPathname, setOldPathname, isLoading, setIsLoading, direction, setDirection, nextUrl, setNextUrl }}>
             {children}
         </LoadingContext.Provider>
     );
