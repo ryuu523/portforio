@@ -2,26 +2,21 @@
 
 import { useCallback, useEffect, useState } from "react";
 import "../styles/top.css"
-import Link from "next/link"
-import { useRouter } from "next/navigation";
 import { useLoading } from "@/context/LoadingContext";
 export default function Home() {
-  const router = useRouter();
-  const { setIsLoading, setDirection,setNextUrl } = useLoading()
+  const { jumpUrl } = useLoading()
 
   const [selectedTriangle, setSelectedTriangle] = useState(0)
   const handleEnterNavigation = useCallback(() => {
     switch (selectedTriangle) {
       case 0:
-        setDirection("out")
-        setNextUrl("/worldmap")
-        setIsLoading(true)
+        jumpUrl("/worldmap")
         break;
       case 1:
-        router.push("/")
+        jumpUrl("/")
         break;
       case 2:
-        router.push("/")
+        jumpUrl("/")
         break;
     }
   }, [selectedTriangle])
@@ -54,9 +49,9 @@ export default function Home() {
           <div className={`triangle ${selectedTriangle == 2 ? "active" : ""}`} ></div>
         </div>
         <div className="right">
-          <Link className="text" href="worldmap">ぼうけんをはじめる</Link>
-          <Link className="text" href="">せってい</Link>
-          <Link className="text" href="">てすと２</Link>
+          <div className="text" onClick={()=>jumpUrl("/worldmap")}>ぼうけんをはじめる</div>
+          <div className="text" onClick={()=>jumpUrl("/")}>せってい</div>
+          <div className="text" onClick={()=>jumpUrl("/")}>てすと２</div>
         </div>
       </div>
     </div>

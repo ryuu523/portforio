@@ -1,43 +1,41 @@
 "use client"
 import { useCallback, useEffect, useState } from "react";
 import "../styles/menu.css"
-import { useRouter } from "next/navigation";
-import Link from "next/link"
+import { useLoading } from "@/context/LoadingContext";
+import { useMenu } from "@/context/MenuContext";
 
 
 export default function Menu() {
-    const router = useRouter();
+    const { jumpUrl } = useLoading()
 
     const [selectedTriangle, setSelectedTriangle] = useState(0)
-    const [isActive, setIsActive] = useState(false)
+    const {isActive,changeActive}=useMenu()
     const handleEnterNavigation = useCallback(() => {
         switch (selectedTriangle) {
             case 0:
-                router.push("/")
+                jumpUrl("/")
                 break;
             case 1:
-                router.push("/worldmap")
+                jumpUrl("/worldmap")
                 break;
             case 2:
-                router.push("/about")
+                jumpUrl("/about")
                 break;
             case 3:
-                router.push("/skills")
+                jumpUrl("/skills")
                 break;
             case 4:
-                router.push("/contact")
+                jumpUrl("/contact")
                 break;
-
         }
     }, [selectedTriangle])
     const handleKeydown = useCallback((e: KeyboardEvent) => {
         let vec = 0
         if (e.key === 'Escape') {
-
             if (!isActive) {
                 setSelectedTriangle(0)
             }
-            setIsActive((prev) => !prev)
+            changeActive()
         }
 
         if (!isActive) return
@@ -72,11 +70,11 @@ export default function Menu() {
                     <div className={`triangle ${selectedTriangle == 4 ? "active" : ""}`} ></div>
                 </div>
                 <div className="right">
-                    <Link className="text" href="/">タイトルに戻る</Link>
-                    <Link className="text" href="/worldmap">WORLDMAPに行く</Link>
-                    <Link className="text" href="/about">ABOUTに行く</Link>
-                    <Link className="text" href="/skills">SKILLSに行く</Link>
-                    <Link className="text" href="/contact">CONTACTに行く</Link>
+                    <div className="text" onClick={() => jumpUrl("/")}>タイトルに戻る</div>
+                    <div className="text" onClick={() => jumpUrl("/worldmap")}>WORLDMAPに行く</div>
+                    <div className="text" onClick={() => jumpUrl("/about")}>ABOUTに行く</div>
+                    <div className="text" onClick={() => jumpUrl("/skills")}>SKILLSに行く</div>
+                    <div className="text" onClick={() => jumpUrl("/contact")}>CONTACTに行く</div>
                 </div >
             </div>
             }

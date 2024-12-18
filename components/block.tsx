@@ -7,17 +7,20 @@ import snow from "../public/images/mapTile/maptile_setsugen.png"
 import sand from "../public/images/mapTile/maptile_sabaku.png"
 import lava from "../public/images/mapTile/maptile_yogan.png"
 
+import playerImage from "../public/images/hero_01_clip.png"
 // import bridge from "../public/images/bridge_side_brown.png"
 // import hole from "../public/images/ana_gray.png"
 
 import "../styles/block.css"
+import { cn } from "@/utils"
 
 type BlockProps = {
     type: number;
+    player: boolean
 };
 
-export default function Block({ type }: BlockProps) {
-  
+export default function Block({ type, player }: BlockProps) {
+
     const getImageSrc = (): string => {
         switch (type) {
             case 0:
@@ -41,11 +44,12 @@ export default function Block({ type }: BlockProps) {
 
     return (
         <>
-            <div >
+            <div className={cn(`relative`)}>
                 <img
                     src={getImageSrc()}
                     alt="Block Image"
                 />
+                {player && <img className={cn(`absolute top-0 object-cover w-[calc(min(50dvw,50dvh)/var(--size))]`)} src={playerImage.src} alt="Player Image" />}
             </div>
         </>
     );

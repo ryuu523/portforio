@@ -15,7 +15,7 @@ export default function KeyNavigation() {
                     {pathname != "/" && <li>ESC : メニューを開く</li>}
                     <li>ENTER : 決定</li>
                     <li>矢印 : 移動</li>
-                    <li>test : test</li>
+                    {pathname != "/" &&<li>ホイール : 拡大縮小</li>}
                 </ul>
             </div>
         </>

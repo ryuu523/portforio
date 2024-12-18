@@ -1,15 +1,15 @@
-.grid{
+.field_grid{
     display: grid;
     place-content: center;
-    width: 100dvw;
-    height: 100dvh;
+    width: min(50dvh,50dvw);
+    height: min(50dvh,50dvw);
 }
 :root {
-    --var: calc(100vh * (16 / 9));
-    --cut: 48;
+    /* --var: calc(90vh * (16 / 9));
+    --cut: 48; */
   }
   
-  @media (min-aspect-ratio: 16/9) {
+  /* @media (min-aspect-ratio: 16/9) {
     :root {
       --var: 100dvw;
       --cut: 48;
@@ -21,4 +21,4 @@
       --var: 100dvh;
       --cut: 27;
     }
-  }
+  } */
