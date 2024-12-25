@@ -19,11 +19,13 @@ export default function RootLayout({
   const pathname = usePathname()
   return (
     <html lang="ja">
-      <body>
+      <body className="bg-zinc-900
+      ">
         <LoadingProvider>
           <MenuProvider>
 
             <LoadingComponent />
+            
             {pathname !== "/" && <Menu />}
             {children}
 

@@ -10,7 +10,7 @@
 }
 
 :root {
-  --font_size:62.5%;
+  --font_size: clamp(10px, 1vw, 16px);
   --background: #ffffff;
   --foreground: #171717;
   --scale:2;

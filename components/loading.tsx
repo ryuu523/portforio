@@ -90,7 +90,7 @@ export default function Loading({ direction, nextPage, endAnimation }: Props) {
         <div className={cn(`w-dvw h-dvh fixed top-0 left-0 z-[99999] grid grid-cols-[repeat(15,1fr)] grid-rows-[repeat(15,1fr)] `)}>
             {tiles.map((row, y) => {
                 return row.map((tile, x) => (
-                    <div key={`${y}:${x}`} className={cn({ "bg-black": tile })}></div>
+                    <div key={`${y}:${x}`} className={cn({ "bg-black ": tile })}></div>
                 ));
             })}
         </div>

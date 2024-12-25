@@ -25,16 +25,11 @@ export const LoadingProvider = ({ children }: { children: ReactNode }) => {
     const [oldPathname, setOldPathname] = useState<string>("/")
     const [isAnimation, setIsAnimation] = useState<boolean>(false)
     const jumpUrl = (url: string) => {
-
-
         if (url === pathname) return
-
-
         setIsAnimation(true)
         setDirection("out")
         setNextUrl(url)
         setIsLoading(true)
-
     }
     return (
         <LoadingContext.Provider value={{ isAnimation, setIsAnimation, jumpUrl, oldPathname, setOldPathname, isLoading, setIsLoading, direction, setDirection, nextUrl, setNextUrl }}>

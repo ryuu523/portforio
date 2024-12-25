@@ -1,8 +1,8 @@
 .field_grid{
     display: grid;
     place-content: center;
-    width: min(50dvh,50dvw);
-    height: min(50dvh,50dvw);
+    width: min(100dvh,100dvw);
+    height: min(100dvh,100dvw);
 }
 :root {
     /* --var: calc(90vh * (16 / 9));

@@ -1,4 +1,5 @@
 import { useMenu } from "@/context/MenuContext";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 // const [field, setField] = useState<Array<Array<number>>>([
@@ -30,15 +31,82 @@ import { useCallback, useEffect, useState } from "react";
 //     [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
 //     [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]])
 
-const SIZE = 10
+const SIZE = 11
 export const useField = () => {
 
-    const [playerPos, setPlayerPos] = useState({ x: Math.round(SIZE / 2), y: Math.round(SIZE / 2) })
-    const field: Array<Array<number>> = Array.from({ length: SIZE }, (_, i) => Array.from({ length: SIZE }, (_, j) => (i + j) % 2));
+    const [playerPos, setPlayerPos] = useState({ x: 3, y: 2 })
+    const [field, setField] = useState<Array<Array<number>>>(Array.from({ length: SIZE }, (_, i) => Array.from({ length: SIZE }, (_, j) => (i + j) % 2)))
+    const [mapComponentPlaces, setMapComponentPlaces] = useState<{ x: number; y: number, id: number }[]>([{ x: 2, y: 2, id: 4 }, { x: 8, y: 2, id: 3 }, { x: 2, y: 8, id: 2 }, { x: 8, y: 8, id: 1 }])
     const { isActive } = useMenu()
+    const pathname = usePathname()
+    useEffect(() => {
+        switch (pathname) {
+            case "/worldmap":
+                setField(Array.from({ length: SIZE }, (_, i) => Array.from({ length: SIZE }, (_, j) => (i + j) % 2)))
+                setMapComponentPlaces([{ x: 2, y: 2, id: 4 }, { x: 8, y: 2, id: 3 }, { x: 2, y: 8, id: 2 }, { x: 8, y: 8, id: 1 }])
+                setPlayerPos({ x: 3, y: 2 })
+                break;
 
+            case "/about":
+                setField([
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],]
+
+                )
+                setMapComponentPlaces([{ x: 5, y: 10, id: 5 }])
+                setPlayerPos({ x: 5, y: 8 })
+                break;
+
+            case "/skills":
+                setField([
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],])
+                setMapComponentPlaces([{ x: 5, y: 10, id: 5 }])
+                setPlayerPos({ x: 5, y: 8 })
+                break;
+
+            case "/contact":
+                setField([
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+                    [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],])
+                setMapComponentPlaces([{ x: 5, y: 10, id: 5 },])
+                setPlayerPos({ x: 5, y: 8 })
+                break;
+
+            default:
+                break;
+        }
+    }, [pathname])
     const handleKeydown = useCallback((e: KeyboardEvent) => {
         if (isActive) return
+        // if(pathname!="/worldmap")return 
         switch (e.key) {
             case "ArrowUp":
             case "w":
@@ -105,8 +173,8 @@ export const useField = () => {
 
     useEffect(() => {
         document.documentElement.style.setProperty('--size', `${field.length}`);
-        document.documentElement.style.setProperty('--scale', `${1}`);
+        document.documentElement.style.setProperty('--scale', `${0.8}`);
     }, [])
-    
-    return { field, playerPos };
+
+    return { field, playerPos, mapComponentPlaces };
 };

@@ -1,21 +1,90 @@
-
 .outer-div {
   display: flex;
   justify-content: center;
   align-items: center;
-    width: 100dvw;
-    height: 100dvh;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .inner-div {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* min-width: 100%;
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
+  position: relative;
+}
+
+.inner-div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* min-width: 100%;
     min-height: 100%; */
-    width: 50dvh;
-    height: 50dvh;
+  width: 50dvh;
+  height: 50dvh;
+}
+
+.fukidasi::after {
+  color: black;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  padding-bottom: calc(min(100dvw, 100dvh) / var(--size) * 0.1);
+  align-items: center;
+  background-image: url("../public/images/fukidasi2.png");
+  background-size: cover;
+  background-position: center;
+  width: calc(min(100dvw, 100dvh) / var(--size) *1.1);
+  height: calc(min(100dvw, 100dvh) / var(--size) * 0.8);
+  position: absolute;
+  top: -15%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  animation: 3s fukidasiAnimation infinite ease;
+}
+
+.fukidasi1::after {
+  content: "contact";
+}
+
+.fukidasi2::after {
+  content: "skills";
+}
+
+.fukidasi3::after {
+  content: "about";
+}
+
+.fukidasi4::after {
+  content: "title";
+}
+
+.fukidasi5::after {
+  content: "worldmapへ";
+  top: 10%;
+  left: 20%;
+  width: calc(min(100dvw, 100dvh) / var(--size) *1.5);
+  height: calc(min(100dvw, 100dvh) / var(--size) * 1.1);
+}
+@keyframes fukidasiAnimation2 {
+  0% {
+    top: 0%;
   }
+
+  50% {
+    top: 10%;
+  }
+
+  100% {
+    top: 0%;
+  }
+}
+
+@keyframes fukidasiAnimation {
+  0% {
+    top: -15%;
+  }
+
+  50% {
+    top: -5%;
+  }
+
+  100% {
+    top: -15%;
+  }
+}
