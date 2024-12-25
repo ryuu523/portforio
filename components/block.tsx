@@ -6,6 +6,7 @@ import snow from "../public/images/mapTile/maptile_setsugen.png"
 import sand from "../public/images/mapTile/maptile_sabaku.png"
 import lava from "../public/images/mapTile/maptile_yogan.png"
 import wood from "../public/images/mapTile/maptile_wood_02.png"
+import kabe from "../public/images/mapTile/maptile_ishizukuri_gray_01.png"
 
 import playerImage from "../public/images/hero_01_clip.png"
 
@@ -31,6 +32,7 @@ type BlockProps = {
 
 export default function Block({ type, player, componentType, switchType }: BlockProps) {
     const getComponentImageSrc = (): string => {
+
         switch (componentType) {
             case 1:
                 return castle.src
@@ -66,6 +68,8 @@ export default function Block({ type, player, componentType, switchType }: Block
                 return lava.src;
             case 7:
                 return wood.src
+            case 8:
+                return kabe.src
             default:
                 return grass1.src
         }

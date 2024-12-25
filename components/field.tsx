@@ -17,7 +17,6 @@ export default function Field({ className, field, playerPos, mapCom }: Props) {
     }, [])
     let i = 0
     const { jumpUrl } = useLoading()
-
     const switchType = (mapComType: number) => {
         switch (mapComType) {
             case 5:
@@ -55,6 +54,7 @@ export default function Field({ className, field, playerPos, mapCom }: Props) {
                     return row.map((type, x) => {
                         if (i < mapCom.length && mapCom[i].x == x && mapCom[i].y == y) {
                             i++
+                            
                             return <Block key={y + ":" + x} type={type} player={playerPos.x == x && playerPos.y == y ? true : false} componentType={mapCom[i - 1].id} switchType={switchType}></Block>
                         }
                         else {
